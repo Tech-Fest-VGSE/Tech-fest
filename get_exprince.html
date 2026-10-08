@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Future Job Interview — 2035</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #070b14;
+    color: white;
+    min-height: 100vh;
+}
+
+.container {
+    width: 92%;
+    max-width: 900px;
+    margin: auto;
+    padding: 25px 0;
+}
+
+/* HEADER */
+
+.logo {
+    text-align: center;
+    color: #6ee7ff;
+    letter-spacing: 4px;
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+.hero {
+    text-align: center;
+    padding: 45px 20px;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 8vw, 75px);
+    line-height: 0.95;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #6ee7ff;
+}
+
+.hero p {
+    color: #aeb7c8;
+    font-size: 17px;
+    margin-bottom: 35px;
+}
+
+button {
+    border: none;
+    padding: 15px 25px;
+    border-radius: 8px;
+    background: #6ee7ff;
+    color: #061018;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+/* CARDS */
+
+.card {
+    background: #101725;
+    border: 1px solid #26364c;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    margin-bottom: 20px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 14px;
+    margin-top: 8px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    border: 1px solid #34465f;
+    background: #080e18;
+    color: white;
+    outline: none;
+}
+
+label {
+    color: #b9c3d4;
+    font-size: 14px;
+}
+
+/* PROGRESS */
+
+.progress-container {
+    height: 7px;
+    background: #202c3d;
+    border-radius: 20px;
+    margin: 15px 0 30px;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: #6ee7ff;
+    border-radius: 20px;
+}
+
+/* QUESTIONS */
+
+.question-number {
+    color: #6ee7ff;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.question {
+    font-size: 25px;
+    line-height: 1.3;
+    margin-bottom: 25px;
+}
+
+.option {
+    background: #0b121f;
+    border: 1px solid #2d4058;
+    padding: 18px;
+    margin: 12px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.option:hover {
+    border-color: #6ee7ff;
+    transform: translateX(4px);
+}
+
+.option.selected {
+    border-color: #6ee7ff;
+    background: #102b36;
+}
+
+.hidden {
+    display: none;
+}
+
+/* RESULT */
+
+.score {
+    text-align: center;
+    font-size: 90px;
+    color: #6ee7ff;
+    font-weight: bold;
+}
+
+.score-label {
+    text-align: center;
+    color: #aeb7c8;
+    margin-bottom: 30px;
+}
+
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.skill {
+    background: #0b121f;
+    border: 1px solid #26364c;
+    padding: 18px;
+    border-radius: 12px;
+}
+
+.skill-name {
+    color: #aeb7c8;
+    font-size: 13px;
+}
+
+.skill-score {
+    font-size: 28px;
+    margin-top: 7px;
+}
+
+.result-message {
+    text-align: center;
+    padding: 25px;
+    margin-top: 20px;
+    border: 1px solid #26364c;
+    border-radius: 12px;
+    color: #cbd5e1;
+}
+
+/* MOBILE */
+
+@media(max-width:600px) {
+
+    .skill-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .score {
+        font-size: 70px;
+    }
+
+    .question {
+        font-size: 21px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">
+FUTURE TALENT LAB / 2035
+</div>
+
+<!-- HOME -->
+
+<section id="home">
+
+<div class="hero">
+
+<h1>
+WOULD YOU<br>
+GET <span>HIRED</span><br>
+IN 2035?
+</h1>
+
+<p>
+Technology is changing jobs.<br>
+This assessment measures how ready you are.
+</p>
+
+<button onclick="startAssessment()">
+START ASSESSMENT →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section id="profile" class="hidden">
+
+<div class="card">
+
+<h2>Candidate Profile</h2>
+
+<label>Your Name</label>
+<input id="name" placeholder="Enter your name">
+
+<label>Technical Skill Level</label>
+
+<select id="technical">
+<option value="1">Beginner</option>
+<option value="2">Intermediate</option>
+<option value="3">Advanced</option>
+</select>
+
+<label>Experience With AI Tools</label>
+
+<select id="ai">
+<option value="1">Very Low</option>
+<option value="2">Basic</option>
+<option value="3">Good</option>
+<option value="4">Advanced</option>
+</select>
+
+<button onclick="beginInterview()">
+BEGIN INTERVIEW →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- INTERVIEW -->
+
+<section id="interview" class="hidden">
+
+<div class="progress-container">
+<div id="progress" class="progress"></div>
+</div>
+
+<div class="card">
+
+<div id="questionNumber" class="question-number">
+QUESTION 1 / 5
+</div>
+
+<div id="question" class="question"></div>
+
+<div id="options"></div>
+
+<button id="nextButton" onclick="nextQuestion()">
+NEXT →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- RESULT -->
+
+<section id="result" class="hidden">
+
+<div class="card">
+
+<h2 style="text-align:center;">
+YOUR 2035 JOB READINESS
+</h2>
+
+<div id="finalScore" class="score">
+0
+</div>
+
+<div class="score-label">
+READINESS SCORE / 100
+</div>
+
+<div class="skill-grid">
+
+<div class="skill">
+<div class="skill-name">TECHNICAL READINESS</div>
+<div id="technicalScore" class="skill-score">0%</div>
+</div>
+
+<div class="skill">
+<div class="skill-name">PROBLEM SOLVING</div>
+<div id="problemScore" class="skill-score">0%</div>
+</div>
+
+<div class="skill">
+<div class="skill-name">COMMUNICATION</div>
+<div id="communicationScore" class="skill-score">0%</div>
+</div>
+
+<div class="skill">
+<div class="skill-name">ADAPTABILITY</div>
+<div id="adaptabilityScore" class="skill-score">0%</div>
+</div>
+
+<div class="skill">
+<div class="skill-name">AI READINESS</div>
+<div id="aiScore" class="skill-score">0%</div>
+</div>
+
+</div>
+
+<div id="message" class="result-message"></div>
+
+<br>
+
+<button onclick="location.reload()" style="width:100%;">
+TAKE AGAIN
+</button>
+
+</div>
+
+</section>
+
+</div>
+
+
+<script>
+
+let currentQuestion = 0;
+let totalScore = 0;
+
+let answers = [];
+
+const questions = [
+
+{
+question:
+"An AI can complete a programming task faster than you. Why should a company still hire you?",
+
+category: "adaptability",
+
+options: [
+{
+text: "I can learn, understand requirements and make decisions.",
+score: 10
+},
+{
+text: "AI cannot replace humans completely.",
+score: 6
+},
+{
+text: "I would just use AI for everything.",
+score: 2
+},
+{
+text: "I don't know.",
+score: 1
+}
+]
+},
+
+{
+question:
+"Your production application suddenly stops working. What do you do first?",
+
+category: "problem",
+
+options: [
+{
+text: "Understand the error, check logs and identify the root cause.",
+score: 10
+},
+{
+text: "Restart everything immediately.",
+score: 5
+},
+{
+text: "Ask someone else to fix it.",
+score: 3
+},
+{
+text: "Wait and see if it fixes itself.",
+score: 1
+}
+]
+},
+
+{
+question:
+"You have to learn a completely new technology in 48 hours. What is your approach?",
+
+category: "adaptability",
+
+options: [
+{
+text: "Understand the fundamentals, build something small and practice.",
+score: 10
+},
+{
+text: "Watch tutorials for two days.",
+score: 6
+},
+{
+text: "Memorize the syntax.",
+score: 4
+},
+{
+text: "Avoid it if possible.",
+score: 1
+}
+]
+},
+
+{
+question:
+"A teammate disagrees strongly with your technical solution. What do you do?",
+
+category: "communication",
+
+options: [
+{
+text: "Discuss both approaches and compare them using evidence.",
+score: 10
+},
+{
+text: "Explain why my solution is better.",
+score: 6
+},
+{
+text: "Let the manager decide.",
+score: 4
+},
+{
+text: "Ignore the disagreement.",
+score: 1
+}
+]
+},
+
+{
+question:
+"Your company gives you an AI tool you have never used before. What would you do?",
+
+category: "ai",
+
+options: [
+{
+text: "Experiment with it, understand its limitations and find useful applications.",
+score: 10
+},
+{
+text: "Learn it only when necessary.",
+score: 6
+},
+{
+text: "Use it without checking its output.",
+score: 3
+},
+{
+text: "Avoid using it.",
+score: 1
+}
+]
+
+}
+
+];
+
+
+function hideAll() {
+
+document.getElementById("home").classList.add("hidden");
+
+document.getElementById("profile").classList.add("hidden");
+
+document.getElementById("interview").classList.add("hidden");
+
+document.getElementById("result").classList.add("hidden");
+
+}
+
+
+function startAssessment() {
+
+hideAll();
+
+document.getElementById("profile").classList.remove("hidden");
+
+}
+
+
+function beginInterview() {
+
+let name = document.getElementById("name").value.trim();
+
+if(name === "") {
+
+alert("Please enter your name.");
+
+return;
+
+}
+
+hideAll();
+
+document.getElementById("interview").classList.remove("hidden");
+
+showQuestion();
+
+}
+
+
+function showQuestion() {
+
+let q = questions[currentQuestion];
+
+document.getElementById("questionNumber").innerText =
+"QUESTION " + (currentQuestion + 1) + " / " + questions.length;
+
+document.getElementById("question").innerText =
+q.question;
+
+let optionsHTML = "";
+
+q.options.forEach((option, index) => {
+
+optionsHTML += `
+<div class="option"
+onclick="selectOption(${index})">
+${option.text}
+</div>
+`;
+
+});
+
+document.getElementById("options").innerHTML = optionsHTML;
+
+document.getElementById("progress").style.width =
+((currentQuestion) / questions.length * 100) + "%";
+
+answers[currentQuestion] = null;
+
+}
+
+
+function selectOption(index) {
+
+let options = document.querySelectorAll(".option");
+
+options.forEach(o => o.classList.remove("selected"));
+
+options[index].classList.add("selected");
+
+answers[currentQuestion] = index;
+
+}
+
+
+function nextQuestion() {
+
+if(answers[currentQuestion] === null) {
+
+alert("Please select an answer.");
+
+return;
+
+}
+
+let q = questions[currentQuestion];
+
+let selected =
+q.options[answers[currentQuestion]];
+
+totalScore += selected.score;
+
+currentQuestion++;
+
+if(currentQuestion < questions.length) {
+
+showQuestion();
+
+} else {
+
+calculateResult();
+
+}
+
+}
+
+
+function calculateResult() {
+
+hideAll();
+
+document.getElementById("result").classList.remove("hidden");
+
+let technicalLevel =
+parseInt(document.getElementById("technical").value);
+
+let aiLevel =
+parseInt(document.getElementById("ai").value);
+
+
+/* BASIC SKILL SCORES */
+
+let technicalScore =
+technicalLevel * 25;
+
+let aiScore =
+aiLevel * 25;
+
+
+/* CATEGORY SCORES */
+
+let problemScore = 0;
+
+let communicationScore = 0;
+
+let adaptabilityScore = 0;
+
+let adaptabilityCount = 0;
+
+let problemCount = 0;
+
+let communicationCount = 0;
+
+
+questions.forEach((q, i) => {
+
+let answer =
+q.options[answers[i]];
+
+let score =
+answer.score * 10;
+
+if(q.category === "problem") {
+
+problemScore += score;
+
+problemCount++;
+
+}
+
+if(q.category === "communication") {
+
+communicationScore += score;
+
+communicationCount++;
+
+}
+
+if(q.category === "adaptability") {
+
+adaptabilityScore += score;
+
+adaptabilityCount++;
+
+}
+
+});
+
+
+if(problemCount > 0)
+problemScore /= problemCount;
+
+if(communicationCount > 0)
+communicationScore /= communicationCount;
+
+if(adaptabilityCount > 0)
+adaptabilityScore /= adaptabilityCount;
+
+
+/* FINAL SCORE */
+
+let finalScore = Math.round(
+
+technicalScore * 0.25 +
+
+problemScore * 0.25 +
+
+communicationScore * 0.15 +
+
+adaptabilityScore * 0.20 +
+
+aiScore * 0.15
+
+);
+
+
+document.getElementById("finalScore").innerText =
+finalScore;
+
+
+document.getElementById("technicalScore").innerText =
+Math.round(technicalScore) + "%";
+
+
+document.getElementById("problemScore").innerText =
+Math.round(problemScore) + "%";
+
+
+document.getElementById("communicationScore").innerText =
+Math.round(communicationScore) + "%";
+
+
+document.getElementById("adaptabilityScore").innerText =
+Math.round(adaptabilityScore) + "%";
+
+
+document.getElementById("aiScore").innerText =
+Math.round(aiScore) + "%";
+
+
+let message = "";
+
+if(finalScore >= 85) {
+
+message =
+"Excellent. Your profile shows strong readiness for an AI-driven workplace. Your next challenge is to develop deeper expertise.";
+
+}
+
+else if(finalScore >= 70) {
+
+message =
+"You are on the right track. You have strong potential, but improving a few skills could significantly increase your future readiness.";
+
+}
+
+else if(finalScore >= 50) {
+
+message =
+"You have a foundation, but the future workplace will require stronger technical and adaptive skills.";
+
+}
+
+else {
+
+message =
+"Your journey starts here. Identify your weakest skills and build them through projects and practice.";
+
+}
+
+
+document.getElementById("message").innerText =
+message;
+
+}
+
+</script>
+
+</body>
+</html>
